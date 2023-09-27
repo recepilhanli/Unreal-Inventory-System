@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
 
+#define Character_Speed_Walking (500.0)
+#define Character_Speed_Running (800.0)
+
 
 UENUM(BlueprintType)
 enum class ERPCType : uint8 {
@@ -43,6 +46,7 @@ public:
 	void FlashlightAction();
 	void TakingItemAction();
 	void UsingItemAction();
+	void SetRunningAction(bool run);
 	void CheckForItems(bool take = false);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Events")

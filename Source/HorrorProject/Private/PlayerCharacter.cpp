@@ -7,6 +7,7 @@
 #include "PlayerInventory.h"
 #include "Camera/CameraComponent.h"
 #include "Components/SpotLightComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -35,6 +36,8 @@ APlayerCharacter::APlayerCharacter()
 
 
 	Inventory = CreateDefaultSubobject<UPlayerInventory>("Inventory");
+
+	GetCharacterMovement()->MaxWalkSpeed = Character_Speed_Walking;	
 }
 
 void APlayerCharacter::BeginPlay()
@@ -168,7 +171,24 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &APlayerCharacter::JumpAction);
 	PlayerInputComponent->BindAction("UsingItem", IE_Pressed, this, &APlayerCharacter::UsingItemAction);
 	PlayerInputComponent->BindAction("TakeItem", IE_Pressed, this, &APlayerCharacter::TakingItemAction);
+
+	DECLARE_DELEGATE_OneParam(FCustomInputDelegate, const bool);
+	InputComponent->BindAction<FCustomInputDelegate>("Running", IE_Pressed, this, &APlayerCharacter::SetRunningAction, true);
+	DECLARE_DELEGATE_OneParam(FCustomInputDelegate, const bool);
+	InputComponent->BindAction<FCustomInputDelegate>("Running", IE_Released, this, &APlayerCharacter::SetRunningAction, false);
+
+
+
+	
 }
+
+void APlayerCharacter::SetRunningAction(bool run)
+{
+if(run) GetCharacterMovement()->MaxWalkSpeed = Character_Speed_Running;
+else GetCharacterMovement()->MaxWalkSpeed = Character_Speed_Walking;
+	UE_LOG(LogTemp,Log,TEXT("Player run state: %hhd"),run);
+}
+
 
 void APlayerCharacter::MoveForward(float scale)
 {
