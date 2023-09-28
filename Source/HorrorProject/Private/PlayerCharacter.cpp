@@ -43,10 +43,7 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	if (IsLocallyControlled() && !HasAuthority()) SetActorLabel(TEXT("Controlling_Player"));
-	else if (HasAuthority()) SetActorLabel(TEXT("Main_Player"));
-	
+
 }
 
 void APlayerCharacter::Tick(float DeltaTime)
