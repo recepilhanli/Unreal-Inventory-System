@@ -6,7 +6,7 @@ This is a multiplayer inventory system built using Unreal Engine C++. The system
 - Players can pick up items from the ground.
 - Players can use items from their inventory.
 - Players can drop items from their inventory.
-- The inventory is synchronized across all players in the game.
+- All of those actions is synchronized across all players in the game.
 
 ## Implementation
 - The UI is implemented using blueprints.
