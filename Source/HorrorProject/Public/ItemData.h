@@ -13,6 +13,7 @@ enum class EITems : uint8 {
 	ITEM_Flashlight       UMETA(DisplayName="Flashlight"),
 	ITEM_Stone        UMETA(DisplayName="Stone"),
 	ITEM_Pistol        UMETA(DisplayName="Pistol"),
+	ITEM_PICKAXE        UMETA(DisplayName="Pickaxe"),
 };
 
 /**

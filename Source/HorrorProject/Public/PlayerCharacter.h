@@ -6,8 +6,8 @@
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
 
-#define Character_Speed_Walking (500.0)
-#define Character_Speed_Running (800.0)
+#define Character_Speed_Walking (350.0)
+#define Character_Speed_Running (600.0)
 
 
 UENUM(BlueprintType)

@@ -37,7 +37,9 @@ APlayerCharacter::APlayerCharacter()
 
 	Inventory = CreateDefaultSubobject<UPlayerInventory>("Inventory");
 
-	GetCharacterMovement()->MaxWalkSpeed = Character_Speed_Walking;	
+	GetCharacterMovement()->MaxWalkSpeed = Character_Speed_Walking;
+	GetCharacterMovement()->AirControl = 1;
+	
 }
 
 void APlayerCharacter::BeginPlay()
